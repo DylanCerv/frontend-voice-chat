@@ -12,8 +12,7 @@ export const loginAPI = async (email, password) => {
     });
     return response.data;
   } catch (error) {
-    console.error(error);
-    throw new Error('Error al iniciar sesión');
+    throw new Error('Error al iniciar sesion');
   }
 };
 

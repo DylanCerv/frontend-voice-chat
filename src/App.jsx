@@ -11,22 +11,24 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route index element={<Landing />} />
-        {/* Rutas de autenticación */}
-        <Route path='auth'>
-            <Route index element={<Navigate to="login" />} />
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-        </Route>
-        <Route path="sala" element={<Room />} />
-        {/* Ruta protegida */}
-        <Route element={<ProtectedRoute redirectTo='auth/login' />} >
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="sala/:hash" element={<Room />} />
-         </Route>
-        <Route path="*" element={<h1 className='text-3xl'>ERROR PAGINA NO ENCONTRADA</h1>} />
-      </Routes>
+      <main className='body-main'>
+        <Routes>
+          <Route index element={<Landing />} />
+          {/* Rutas de autenticación */}
+          <Route path='auth'>
+              <Route index element={<Navigate to="login" />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+          </Route>
+          <Route path="sala" element={<Room />} />
+          {/* Ruta protegida */}
+          <Route element={<ProtectedRoute redirectTo='auth/login' />} >
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="sala/:hash" element={<Room />} />
+          </Route>
+          <Route path="*" element={<h1 className='text-3xl'>ERROR PAGINA NO ENCONTRADA</h1>} />
+        </Routes>
+      </main>
     </BrowserRouter>
   )
 }

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerAPI } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import ContianerForm from '../../components/ContianerForm/ContianerForm';
+import TextError from '../../components/TextError/TextError';
 
 export default function Register() {
   const [email, setEmail] = useState('example@example.com');
@@ -24,38 +26,39 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <h2>Registro</h2>
-      {error && <div>{error}</div>}
-      <form onSubmit={handleRegister}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Registrarse</button>
-      </form>
+    <ContianerForm
+      title={"Registro"}
+      onSubmit={handleRegister  }
+      textButton={"Registrarse"}
+      textFooter={"¿Ya tienes una cuenta?"}
+      linkFooter={"/auth/login"}
+      textLinkFooter={"Iniciar Sesión"}
+    >
+      {error && <TextError>{error}</TextError>}
 
-      <div>
-        <Link to={'/auth/login'} >Login</Link>
-        <br />
-        <Link to={'/'} >Landing</Link>
+      <div class="wrap-input100 validate-input">
+        <input
+          className="input100"
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          placeholder="Email"
+        />
       </div>
-    </div>
+
+      <div class="wrap-input100 validate-input">
+        <input
+          className="input100"
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          placeholder="Password"
+        />
+      </div>
+    </ContianerForm>
   )
 }

@@ -1,0 +1,8 @@
+
+.texts-change-page-form {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 2rem;
+}
