@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Landing.css'
 import Header from '../../components/Header/header'
+import { io } from 'socket.io-client'
+
+const socket = io('http://localhost:3000')
+
 
 export default function Landing() {
 
