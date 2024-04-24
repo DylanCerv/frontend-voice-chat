@@ -8,6 +8,10 @@ import TextError from '../../components/TextError/TextError';
 export default function Register() {
   const [email, setEmail] = useState('example@example.com');
   const [password, setPassword] = useState('12345');
+  const [username, setUsername] = useState('NombreUsuario');
+  const [glb, setGlb] = useState('dsads-4848-ds8');
+
+  
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { loginContext } = useAuth();
@@ -16,7 +20,7 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await registerAPI(email, password);
+      const response = await registerAPI(email, password, username, glb);
       loginContext(response.token)
       
       navigate('/dashboard');
@@ -57,6 +61,30 @@ export default function Register() {
           onChange={(e) => setPassword(e.target.value)}
           required
           placeholder="Password"
+        />
+      </div>
+
+      <div class="wrap-input100 validate-input">
+        <input
+          className="input100"
+          type="text"
+          id="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+          placeholder="Username"
+        />
+      </div>
+
+      <div class="wrap-input100 validate-input">
+        <input
+          className="input100"
+          type="text"
+          id="glb"
+          value={glb}
+          onChange={(e) => setGlb(e.target.value)}
+          required
+          placeholder="glb"
         />
       </div>
     </ContianerForm>
